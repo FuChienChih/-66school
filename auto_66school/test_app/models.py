@@ -1,17 +1,9 @@
 # from django.db import models
 import os
 import unittest
-import importlib.util
 
 
 def run_unit_tests(unit_test_path):
-    # Dynamically load the test module
-    spec = importlib.util.spec_from_file_location(
-        "test_module", unit_test_path
-    )
-    test_module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(test_module)
-
     # Discover and run tests
     loader = unittest.TestLoader()
     suite = loader.discover(os.path.dirname(unit_test_path))
@@ -21,9 +13,9 @@ def run_unit_tests(unit_test_path):
     if result.wasSuccessful():
         return ("測試通過", "沒有錯誤")
     elif result.failures:
-        return "錯誤的運行結果:", result.failures[0][1]
+        return "錯誤的運行結果", result.failures[0][1]
     elif result.errors:
-        return "錯誤的語法:", result.errors[0][1]
+        return "錯誤的語法", result.errors[0][1]
 
 
 def create_py_file(string, path):
