@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+	<form method="POST"">
+	  {% csrf_token %}
+	  <!-- 提供所有課堂給學生選擇，學生可以點選btm選擇想要解決的題目-->
+	  {% for key, value in btn.items %}
+      <button type="submit" name="button" value="{{ key }}">{{ value }}</button>
+      {% endfor %}
+	</form>
+</body>
+
+</html>

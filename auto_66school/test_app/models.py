@@ -3,6 +3,15 @@ import os
 import unittest
 
 
+def write_to_file(my_ans, my_path):
+    # 創建目錄和檔案路徑
+    os.makedirs(os.path.dirname(my_path), exist_ok=True)
+
+    # 將字串內容寫入檔案
+    with open(my_path, "w") as f:
+        f.write(my_ans)
+
+
 def run_unit_tests(unit_test_path):
     # Discover and run tests
     loader = unittest.TestLoader()

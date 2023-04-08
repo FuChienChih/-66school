@@ -4,16 +4,13 @@
 	<title>Input Example</title>
 </head>
 <body>
-	<form method="POST" action="{% url 'index-view' %}">
+    請輸入內容
+    <form method="POST"">
 	  {% csrf_token %}
-	  <label for="inputField">请输入内容：</label>
-	  <input type="text" id="inputField" name="inputField"><br><br>
+	  <textarea id="inputField" name="inputField" rows="40" cols="50"></textarea><br><br>
 	  <button type="submit">提交</button>
-	</form>
-    <form method="POST" action="{% url 'index-view' %}">
-	  {% csrf_token %}
-	  <label for="inputField">请输入内容：</label>
-	  <textarea id="inputField" name="inputField" rows="4" cols="50"></textarea><br><br>
+	  <button type="submit" name="button" value="button1">Button 1</button>
+      <button type="checkbox" name="button" value="button2">Button 2</button>
 	  <button type="submit">提交</button>
 	</form>
 </body>
