@@ -1,7 +1,7 @@
 from Unitest.ans import sum_of_values
+from unittest.mock import patch
 import unittest
 from io import StringIO
-from unittest.mock import patch
 
 
 class TestSum(unittest.TestCase):

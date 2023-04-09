@@ -15,7 +15,8 @@ def write_to_file(my_ans, my_path):
 def run_unit_tests(unit_test_path):
     # Discover and run tests
     loader = unittest.TestLoader()
-    suite = loader.discover(os.path.dirname(unit_test_path))
+    # suite = loader.discover(os.path.dirname(unit_test_path))
+    suite = loader.discover(unit_test_path)
     runner = unittest.TextTestRunner()
     result = runner.run(suite)
     # Return result as string
