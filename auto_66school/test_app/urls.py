@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, AutoTest, Welcome
+from .views import Home, AutoTest, Welcome, temp
 
 urlpatterns = [
     path("", Welcome.as_view(), name="welcome"),
@@ -12,5 +12,5 @@ urlpatterns = [
         name="autotest",
     ),
     # 未來將新增功能
-    path("temp", Welcome.as_view(), name="temp"),
+    path("temp", temp.as_view(), name="temp"),
 ]
