@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to 66school Auto Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      
+      .btn:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to 66school Auto Test</h1>
+      <p>＊目前只開放線上解題功能＊</p>
+      <a href="{% url 'home' %}" class="btn">線上解題</a>
+      <a href="{% url 'temp' %}" class="btn">全校解題狀況/排名</a>
+      <a href="{% url 'temp' %}" class="btn">個班級解題情況統計表</a>
+    </div>
+  </body>
+</html>

@@ -4,30 +4,12 @@ from .models import run_unit_tests, write_to_file
 import os
 
 
-# 解題區~包含答案上傳以及答案反饋
-class AutoTest(View):
+class Welcome(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "index.html")
-
-    def post(self, request, *args, **kwargs):
-        # 找到test.py(單元測試)路徑
-        category, level, question = request.path.split("/")[1:4]
-        path = f"auto_test_file/{category}/{level}/{question}"
-        unit_test_path = os.path.abspath(os.path.join(__file__, f"../{path}"))
-        # 根據使用者學號定義ans.py路徑
-        ans_path = os.path.abspath(
-            os.path.join(__file__, f"../{path}/Unitest/ans.py")
-        )
-        # 將ans寫入ans_path讓test.py(單元測試)引用
-        input_value = request.POST.get("inputField")
-        write_to_file(input_value, ans_path)
-        # 準備輸出結果
-        data = {}
-        data["test_result"], data["error"] = run_unit_tests(unit_test_path)
-        return render(request, "index2.html", data)
+        return render(request, "welcome.html")
 
 
-# 首頁
+# 選題首頁
 class Home(View):
     # 有哪些課堂
     categories = ["Python", "ML", "BigData", "DL", "NLP"]
@@ -93,6 +75,30 @@ class Home(View):
             return redirect("/" + new_path)
 
 
+# 解題區~包含答案上傳以及答案反饋
+class AutoTest(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "index.html")
+
+    def post(self, request, *args, **kwargs):
+        # 找到test.py(單元測試)路徑
+        category, level, question = request.path.split("/")[1:4]
+        path = f"auto_test_file/{category}/{level}/{question}"
+        unit_test_path = os.path.abspath(os.path.join(__file__, f"../{path}"))
+        # 根據使用者學號定義ans.py路徑
+        ans_path = os.path.abspath(
+            os.path.join(__file__, f"../{path}/Unitest/ans.py")
+        )
+        # 將ans寫入ans_path讓test.py(單元測試)引用
+        input_value = request.POST.get("inputField")
+        write_to_file(input_value, ans_path)
+        # 準備輸出結果
+        data = {}
+        data["test_result"], data["error"] = run_unit_tests(unit_test_path)
+        return render(request, "index2.html", data)
+
+
 # 這裡會寫一個各個解題區的副程式，用來被繼承。
-class father(View):
-    pass
+class temp(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "temp.html")
