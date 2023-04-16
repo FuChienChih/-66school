@@ -1,6 +1,7 @@
 # from django.db import models
 import os
 import unittest
+import importlib
 
 
 def write_to_file(my_ans, my_path):
@@ -13,6 +14,8 @@ def write_to_file(my_ans, my_path):
 
 
 def run_unit_tests(unit_test_path):
+    # importlib.invalidate_caches()
+    importlib.reload(importlib.import_module("tests"))
     # Discover and run tests
     loader = unittest.TestLoader()
     # suite = loader.discover(os.path.dirname(unit_test_path))
